@@ -18,10 +18,10 @@ In this blog post we're trying to explore what entanglement is on a mathematical
 # Bell's states
 
 We first consider the simplest example of achieving entanglement: a [Bell state](https://en.wikipedia.org/wiki/Bell_state). 
-Specifically, we create the Bell state $\Psi^{+} = \frac{\ket{01}+\ket{10}}{\sqrt{2}}$, which is obtained by 
-- starting with a 2 qubit register with one qubit in the $\ket{0}$ and one in the $\ket{1}$ state
+Specifically, we create the Bell state $\Psi^{-} = \frac{\ket{01}-\ket{10}}{\sqrt{2}}$, which is obtained by 
+- starting with a 2 qubit register with both qubits in the $\ket{1}$ state
 - applying the Hadamard gate to the first qubit
-- applying the CNOT controlled by the first qubit
+- applying the CNOT controlled by the first qubit, acting on the second
 <p align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/The_Hadamard-CNOT_transform_on_the_zero-state.png" />
 </p>
@@ -31,24 +31,24 @@ Their entanglement means that they are also correlated: if we were to measure th
 
 # Making things more concrete
 Rather than talking about our qubits as abstract concepts, let's consider the case where we run an experiment using photons. 
-Imagine we have a laser that can shoot an individual photon onto some kind of crystal, which produces the entangled state $\Psi^{+}$ above.
-And since we are talking about photons specifically, let's use the photon's polarization to describe which state they're in.
+Imagine we have a laser that can shoot an individual photon onto some kind of crystal, which produces the entangled state $\Psi^{-}$ above.
+And since we are talking about photons specifically, let's use the photon's polarization (vertical or horizontal) to describe which state they're in.
 
-In particular, let's say that a vertically polarized photon corresponds to the state $\ket{V}$ and a horizontally polarized photon to state $\ket{H}$. So our entangled state now looks like $\frac{\ket{VH}+\ket{HV}}{\sqrt{2}}$.
+In particular, let's say that a vertically polarized photon corresponds to the state $\ket{V}$ and a horizontally polarized photon to state $\ket{H}$. So our entangled state now looks like $\frac{\ket{VH}-\ket{HV}}{\sqrt{2}}$.
 Continuing with our experimental setup, imagine we give the first of this pair of entangled qubits to Alice and the second to Bob.
 
-Now instead of referring to the qubits as "first" and "second" we can label them with Alice's and Bob's initials: $\frac{\ket{V_{A}}\ket{H_{B}} + \ket{H_{A}}\ket{V_{B}}}{\sqrt{2}}$ 
+Now instead of referring to the qubits as "first" and "second" we can label them with Alice's and Bob's initials: $\frac{\ket{V_{A}}\ket{H_{B}} - \ket{H_{A}}\ket{V_{B}}}{\sqrt{2}}$ 
 
 Lastly, Alice and Bob are equipped with a measurement device, a linearly polarized lens.
 For the sake of simplicity (we are going to relax this assumption later) assume that both Alice and Bob orient their lens at $90^{\circ}$ making them vertically polarized lenses.
 
 # Experiment outcomes
 As both photons are in superposition, Alice and Bob are *a priori* equally likely to observe that their lens either blocks the photon or let's it through.
-Note that the joint state does not contain $\ket{V_{A}}\ket{V_{B}}$ or $\ket{H_{A}}\ket{H_{B}}$ which means that it's not possible for both of them to see a photon, or for neither of them to see a photon (assuming they keep using their vertical and horizontal lenses). It's certain that one of them will see the photon and the other one doesn't.
+Note that the joint state does not contain $\ket{V_{A}}\ket{V_{B}}$ or $\ket{H_{A}}\ket{H_{B}}$ which means that it's not possible for both of them to see a photon, or for neither of them to see a photon (assuming they keep using their vertically polarized lenses). It's certain that one of them will see the photon and the other one doesn't.
 
 Moreover, while either of the 2 outcomes are 50% likely before the experiment, if Alice were to use her lens first and saw a photon, Bob would know with certainty that he wouldn't observe a photon without having to measure it. Likewise, if Alice were to use her lens but didn't see a photon, then Bob would know without measuring that he will definitely see a photon.
 
-The reason this happens is that the act of measuring alters the joint state. Measuring a photon with a vertically polarized lens means applying the bra $\bra{V}$. Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So if Alice observes the photon, which is in equal superposition of the states $\ket{V}$ and $\ket{H}$, with her vertically polarized lens and sees the photon, we know with certainty that the joint state of the entangled photons is $\ket{V_{A}}\ket{H_{B}}$. That is, her act of measuring collapses the joint state to $\ket{V_{A}}\ket{H_{B}}$.
+The reason this happens is that the act of measuring alters the joint state. Mathematically, measuring a vertically polarized photon, which is described by the ket $\ket{V}$, with a vertically polarized lens means applying the bra $\bra{V}$ to it. Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So if Alice observes the photon, which is in equal superposition of the states $\ket{V}$ and $\ket{H}$, with her vertically polarized lens and sees the photon, we know with certainty that the joint state of the entangled photons is $\ket{V_{A}}\ket{H_{B}}$. That is, her act of measuring collapses the joint state to $\ket{V_{A}}\ket{H_{B}}$.
 
 # What's special about this?
 If you wonder why this is exciting, consider a classical variant of this experiment. Instead of 2 quantum objects let's use 2 everyday objects like socks. Imagine that we have a red and a blue sock and put them into separate boxes. We then send Alice and Bob one of the boxes each at random. If Alice opens her box first and observes a red sock, then Bob knows with certainty that his sock will be blue, and vice versa. It is also impossible for both Alice and Bob to get a red sock, or both to get a blue sock. So everything seems exactly the same as in our photon experiment. 
@@ -57,5 +57,11 @@ But here is the difference: the socks have a definitive colour at any time durin
 
 This is the "spooky action at a distance" that Einstein referred to.
 
-One explanation for this strangeness was the existence of some hidden variables, which
+# Hidden variables and Bell's Inequality
+To Einstein the conundrum of entanglement only seemed possible if the joint state of the two photons somehow got determined locally before they were separated and sent to Alice and Bob. So the information that Alice's photon will be measured in the $\ket{V}$ state and Bob's in the $\ket{H}$ state would have to be stored in a hidden, unobservable variable.
 
+There is a great [blog post](https://www.sciencenews.org/blog/context/entanglement-spooky-not-action-distance) about the disagreement of Einstein and Bohr on this topic. For the remainder of this blog post we'll talk about Bell's Inequality and how it disproves the notion of hidden variables. Entanglement appears to be spooky after all!
+
+To start off, recall that so far we've equipped Alice and Bob with exactly vertically polarized lenses. Given the fact that we put our photons in the joint state $\Psi^{-}$, in which both photons are in equal superposition of the $\ket{V}$ and $\ket{H}$ states, when measuring Alice and Bob always obtain of the 2 results: Alice sees a photon and Bob doesn't, or Alice doesn't see a photon and Bob does. In other words, their measurements __always__ disagree.
+
+However things change if we allow Alice and Bob to slightly rotate their lenses to obtain a diagonal polarization of somewhere between $0^{\circ}$ and $90^{\circ}$. In this case, even if Alice measures a vertically polarized photon, which means that Bob's photon in horizontally polarized, there is still a chance that he also observes a photon.
