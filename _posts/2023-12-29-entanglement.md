@@ -31,7 +31,7 @@ Their entanglement means that they are also correlated: if we were to measure th
 
 # Making things more concrete
 Rather than talking about our qubits as abstract concepts, let's consider the case where we run an experiment using photons. 
-Imagine we have a laser can shoot an individual photon onto some kind of crystal, which produces the entangled state $\Psi^{+}$ above.
+Imagine we have a laser that can shoot an individual photon onto some kind of crystal, which produces the entangled state $\Psi^{+}$ above.
 And since we are talking about photons specifically, let's use the photon's polarization to describe which state they're in.
 
 In particular, let's say that a vertically polarized photon corresponds to the state $\ket{V}$ and a horizontally polarized photon to state $\ket{H}$. So our entangled state now looks like $\frac{\ket{VH}+\ket{HV}}{\sqrt{2}}$.
@@ -40,8 +40,22 @@ Continuing with our experimental setup, imagine we give the first of this pair o
 Now instead of referring to the qubits as "first" and "second" we can label them with Alice's and Bob's initials: $\frac{\ket{V_{A}}\ket{H_{B}} + \ket{H_{A}}\ket{V_{B}}}{\sqrt{2}}$ 
 
 Lastly, Alice and Bob are equipped with a measurement device, a linearly polarized lens.
-For the sake of simplicity (we are going to relax this assumption) assume that Alice orients her lens at $90^{\circ}$ making it a vertically polarized lens, and Bob keeps his as $0^{\circ}$ making it a horizontally polarized lens.
+For the sake of simplicity (we are going to relax this assumption later) assume that both Alice and Bob orient their lens at $90^{\circ}$ making them vertically polarized lenses.
 
-As both photons are in superposition, Alice and Bob are a priori equally likely to observe that their lens either blocks the photon or let's it through.
-Specifically the probabilities of each of the 4 outcomes are
-$$\text{Alice observes photon, Bob's gets blocked:} \bra{V_{A}}\ket{V_{A}}\bra{V_{B}}\ket{H_{B}} + \ket{H_{A}}\ket{V_{B}}$$
+# Experiment outcomes
+As both photons are in superposition, Alice and Bob are *a priori* equally likely to observe that their lens either blocks the photon or let's it through.
+Note that the joint state does not contain $\ket{V_{A}}\ket{V_{B}}$ or $\ket{H_{A}}\ket{H_{B}}$ which means that it's not possible for both of them to see a photon, or for neither of them to see a photon (assuming they keep using their vertical and horizontal lenses). It's certain that one of them will see the photon and the other one doesn't.
+
+Moreover, while either of the 2 outcomes are 50% likely before the experiment, if Alice were to use her lens first and saw a photon, Bob would know with certainty that he wouldn't observe a photon without having to measure it. Likewise, if Alice were to use her lens but didn't see a photon, then Bob would know without measuring that he will definitely see a photon.
+
+The reason this happens is that the act of measuring alters the joint state. Measuring a photon with a vertically polarized lens means applying the bra $\bra{V}$. Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So if Alice observes the photon, which is in equal superposition of the states $\ket{V}$ and $\ket{H}$, with her vertically polarized lens and sees the photon, we know with certainty that the joint state of the entangled photons is $\ket{V_{A}}\ket{H_{B}}$. That is, her act of measuring collapses the joint state to $\ket{V_{A}}\ket{H_{B}}$.
+
+# What's special about this?
+If you wonder why this is exciting, consider a classical variant of this experiment. Instead of 2 quantum objects let's use 2 everyday objects like socks. Imagine that we have a red and a blue sock and put them into separate boxes. We then send Alice and Bob one of the boxes each at random. If Alice opens her box first and observes a red sock, then Bob knows with certainty that his sock will be blue, and vice versa. It is also impossible for both Alice and Bob to get a red sock, or both to get a blue sock. So everything seems exactly the same as in our photon experiment. 
+
+But here is the difference: the socks have a definitive colour at any time during the experiment. This is different from our photons. Until they are measured the photons are in superposition, which means they do not have a definitive polarization. In our experiment, Alice's photon doesn't have a definitive polarization until she measures it with her lens. Only at that point is the polarization of her photon determined. And what's more, also the polarization of Bob's photon is determined, even though it is not measured. The strange this is not only that, but also that this seems to imply that even if the photons were millions of miles apart, measuring Alice's photon would "immediately" determine the state of Bob's photon. but clearly that can't be possible, because nothing can travel faster than the speed of light, including the information of Alice's measurement.
+
+This is the "spooky action at a distance" that Einstein referred to.
+
+One explanation for this strangeness was the existence of some hidden variables, which
+
