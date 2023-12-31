@@ -6,7 +6,7 @@ date: 2023-12-28
 # Entanglement
 
 Once referred to as "spooky action at a distance" by Einstein, entanglement is one of the most puzzling aspects of quantum mechanics. 
-It's implications are counterintuitive to us, because we we are used to interacting with objects on "human scale", or a few orders of magnitude smaller than that. 
+It's implications are counterintuitive to us, because we are used to interacting with objects on "human scale", or a few orders of magnitude smaller than that. 
 Quantum particles on the other hand are many more orders of magnitude smaller. 
 Perhaps one of the largest quantum objects created so far is a [sapphire crystal](https://www.scientificamerican.com/article/physicists-create-biggest-ever-schroedingers-cat/) weighing 16 micrograms and consisting of about $10^{17}$ atoms. 
 That's truly is small, but quantum particles used in experiments or actual quantum computers, such as ions, electrons or photons, are even smaller. 
@@ -72,3 +72,11 @@ So let's start with the assumption that hidden variables are a valid explanation
 
 There are 8 different hidden states the photons can take:
 
+||State 1|State 2|State 3|State 4|State 5|State 6|
+|:---: |:---: |:---: |:---: |:---: |:---: |:---: |
+|Alice sees photon at $0^{\circ}$|$\checkmark$|$\checkmark$|$\checkmark$|X| 5       |
+|Alice sees photon at $30^{\circ}$|$\checkmark$|$\checkmark$|X|$\checkmark$| 10      |
+|Alice sees photon at $60^{\circ}$|$\checkmark$|X|X|$\checkmark$| 15      |
+|Bob sees photon at $0^{\circ}$| X     |X|X| 19      | 20      |
+|Bob sees photon at $30^{\circ}$| X      |X|$\checkmark$| 24      | 25      |
+|Bob sees photon at $60^{\circ}$| X      |$\checkmark$|$\checkmark$| 29      | 30      |
