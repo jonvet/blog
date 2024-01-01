@@ -13,7 +13,7 @@ That's truly is small, but quantum particles used in experiments or actual quant
 When studying quantum mechanics it's a recurring theme that on such small scales, the world just works differently than what we're used to. 
 Entanglement is a specific manifestations of this.
 
-In this blog post we're trying to explore what entanglement is on a mathematical level.
+In this blog post we're trying to explore what entanglement is on a mathematical level, relate it to something more tangible (photons) and discuss what makes it so strange.
 
 # Bell's states
 
@@ -31,13 +31,13 @@ Their entanglement means that they are also correlated: if we were to measure th
 
 # Making things more concrete
 Rather than talking about our qubits as abstract concepts, let's consider the case where we run an experiment using photons. 
-Imagine we have a laser that can shoot an individual photon onto some kind of crystal, which produces the entangled state $\Psi^{-}$ above.
+Imagine we have a laser which when pointed towards some kind of crystal like [Barium borate](https://en.wikipedia.org/wiki/Barium_borate) produces the entangled state $\Psi^{-}$ above.
 And since we are talking about photons specifically, let's use the photon's polarization (vertical or horizontal) to describe which state they're in.
 
-In particular, let's say that a vertically polarized photon corresponds to the state $\ket{V}$ and a horizontally polarized photon to state $\ket{H}$. So our entangled state now looks like $\frac{\ket{VH}-\ket{HV}}{\sqrt{2}}$.
+In particular, let's denote a horizontally polarized photon by state $\ket{H}$ (equivalent to a qubit in state $\ket{0}$) a vertically polarized photon by the state $\ket{V}$ (equivalent to $\ket{1}$). So our entangled state now looks like $\frac{\ket{HV}-\ket{VH}}{\sqrt{2}}$.
 Continuing with our experimental setup, imagine we give the first of this pair of entangled qubits to Alice and the second to Bob.
 
-Now instead of referring to the qubits as "first" and "second" we can label them with Alice's and Bob's initials: $\frac{\ket{V_{A}}\ket{H_{B}} - \ket{H_{A}}\ket{V_{B}}}{\sqrt{2}}$ 
+Now instead of referring to the qubits as "first" and "second" we can label them with Alice's and Bob's initials: $\frac{\ket{H_{A}}\ket{V_{B}} - \ket{V_{A}}\ket{H_{B}}}{\sqrt{2}}$ 
 
 Lastly, Alice and Bob are equipped with a measurement device, a linearly polarized lens.
 For the sake of simplicity (we are going to relax this assumption later) assume that both Alice and Bob orient their lens at $90^{\circ}$ making them vertically polarized lenses.
@@ -48,7 +48,7 @@ Note that the joint state does not contain $\ket{V_{A}}\ket{V_{B}}$ or $\ket{H_{
 
 Moreover, while either of the 2 outcomes are 50% likely before the experiment, if Alice were to use her lens first and saw a photon, Bob would know with certainty that he wouldn't observe a photon without having to measure it. Likewise, if Alice were to use her lens but didn't see a photon, then Bob would know without measuring that he will definitely see a photon.
 
-The reason this happens is that the act of measuring alters the joint state. Mathematically, measuring a vertically polarized photon, which is described by the ket $\ket{V}$, with a vertically polarized lens means applying the bra $\bra{V}$ to it. Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So if Alice observes the photon, which is in equal superposition of the states $\ket{V}$ and $\ket{H}$, with her vertically polarized lens and sees the photon, we know with certainty that the joint state of the entangled photons is $\ket{V_{A}}\ket{H_{B}}$. That is, her act of measuring collapses the joint state to $\ket{V_{A}}\ket{H_{B}}$.
+The reason this happens is that the act of measuring alters the joint state. Mathematically, measuring a vertically polarized photon, which is described by the ket $\ket{V}$, with a vertically polarized lens means calculating the inner product with the bra $\bra{V}$. Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So if Alice observes the photon, which is in equal superposition of the states $\ket{V}$ and $\ket{H}$, with her vertically polarized lens and sees the photon, we know with certainty that the joint state of the entangled photons is $\ket{V_{A}}\ket{H_{B}}$. That is, her act of measuring collapses the joint state to $\ket{V_{A}}\ket{H_{B}}$.
 
 # What's special about this?
 If you wonder why this is exciting, consider a classical variant of this experiment. Instead of 2 quantum objects let's use 2 everyday objects like socks. Imagine that we have a red and a blue sock and put them into separate boxes. We then send Alice and Bob one of the boxes each at random. If Alice opens her box first and observes a red sock, then Bob knows with certainty that his sock will be blue, and vice versa. It is also impossible for both Alice and Bob to get a red sock, or both to get a blue sock. So everything seems exactly the same as in our photon experiment. 
@@ -64,19 +64,79 @@ There is a great [blog post](https://www.sciencenews.org/blog/context/entangleme
 
 To start off, recall that so far we've equipped Alice and Bob with vertically polarized lenses. Given the fact that we put our photons in the joint state $\Psi^{-}$, in which both photons are in equal superposition of the $\ket{V}$ and $\ket{H}$ states, Alice and Bob always obtain one of the 2 results: either Alice sees a photon and Bob doesn't, or Alice doesn't see a photon and Bob does. In other words, their measurements __always disagree__.
 
-However things change if we allow Alice and Bob to slightly rotate their lenses to obtain a diagonal polarization of somewhere between $0^{\circ}$ and $90^{\circ}$. In this case, even if Alice measures a vertically polarized photon, which means that Bob's photon in horizontally polarized, there is still a chance that he also observes a photon. So if Alice and Bob orient their lenses differently it's possible for their measurements to __agree or disagree__.
+However things change if we allow Alice and Bob to slightly rotate their lenses to obtain different diagonal polarizations. In this case, even if Alice measures a vertically polarized photon, which means that Bob's photon in horizontally polarized, there is still a chance that he also observes a photon. So if Alice and Bob orient their lenses differently it's possible for their measurements to __agree or disagree__.
 
-The proof that hidden variables cannot explain the relationship between entangled quantum particles works by contradiction. First, we assume that hidden variables do explain entanglement and derive an inequality that has to hold if the hypothesis of hidden variables was true. This inequality was originally derived by John Bell in 1964, and it puts a limit on how often Alice and Bob's measurements would match. Then we run actual quantum experiments to show that the inequality doesn't always hold. Alice and Bob's measurements can actually match more often. This disproves that hidden variables are the driving force behind the "spooky action at a distance" and provides evidence for the standard quantum view that quantum particles have properties that are only determined when measured.
+The proof that hidden variables cannot explain the relationship between entangled quantum particles works by contradiction. First, we assume that hidden variables do explain entanglement and derive an inequality that has to hold if the hypothesis of hidden variables was true. This inequality was originally derived by John Bell in 1963, and it puts a limit on how often Alice and Bob's measurements would match. Then we run actual quantum experiments to show that the inequality doesn't always hold. Alice and Bob's measurements can actually match more often. This disproves that hidden variables are the driving force behind the "spooky action at a distance" and provides evidence for the standard quantum view that quantum particles have properties that are only determined when measured.
 
-So let's start with the assumption that hidden variables are a valid explanation. We change the experimental setup and allow Alice and Bob to randomly rotate their lens to $0^{\circ}$, $30^{\circ}$ and $60^{\circ}$ instead of just using a vertically polarized lens. Remember we said that before we send the photons to Alice and Bob, their joint state has to be determined locally and stored in some kind of hidden variable. The hidden state of the photon is then a rule that determines whether it will pass through Alice and Bob's lenses at each of the 3 orientations. And in order to be in line with the joint Bell state, it has to be the case that when Alice and Bob end up choosing the same orientation, their measurement results will disagree, e.g. Alice sees a photon and Bob doesn't.
+### Assume hidden variables theory is correct
+Let's start with the assumption that hidden variables are a valid explanation. We change the experimental setup and allow Alice and Bob to randomly rotate their lens to $0^{\circ}$, $60^{\circ}$ or $120^{\circ}$ instead of just using a vertically polarized lens. Remember we said that before we send the photons to Alice and Bob, their joint state has to be determined locally and stored in some kind of hidden variable. The hidden state of the photon is then a rule that determines whether it will pass through Alice and Bob's lenses at each of the 3 orientations. And in order to adhere to the joint Bell state, it has to be the case that when Alice and Bob end up choosing the same orientation, their measurement results will disagree, e.g. Alice sees a photon and Bob doesn't.
 
 There are 8 different hidden states the photons can take:
 
-||State 1|State 2|State 3|State 4|State 5|State 6|
-|:---: |:---: |:---: |:---: |:---: |:---: |:---: |
-|Alice sees photon at $0^{\circ}$|$\checkmark$|$\checkmark$|$\checkmark$|X| 5       |
-|Alice sees photon at $30^{\circ}$|$\checkmark$|$\checkmark$|X|$\checkmark$| 10      |
-|Alice sees photon at $60^{\circ}$|$\checkmark$|X|X|$\checkmark$| 15      |
-|Bob sees photon at $0^{\circ}$| X     |X|X| 19      | 20      |
-|Bob sees photon at $30^{\circ}$| X      |X|$\checkmark$| 24      | 25      |
-|Bob sees photon at $60^{\circ}$| X      |$\checkmark$|$\checkmark$| 29      | 30      |
+||State 1|State 2|State 3|State 4|State 5|State 6|State 7|State 8|
+|:---: |:---: |:---: |:---: |:---: |:---: |:---: |:---: |:---: |
+|Alice sees photon at $0^{\circ}$   |$\checkmark$|$\checkmark$|$\checkmark$|X|$\checkmark$|X|X|X|
+|Alice sees photon at $60^{\circ}$  |$\checkmark$|$\checkmark$|X|$\checkmark$|X|$\checkmark$|X|X|
+|Alice sees photon at $120^{\circ}$  |$\checkmark$|X|$\checkmark$|$\checkmark$|X|X|$\checkmark$|X|
+|Bob sees photon at $0^{\circ}$     |X|X|X|$\checkmark$|X|$\checkmark$|$\checkmark$|$\checkmark$|
+|Bob sees photon at $60^{\circ}$    |X|X|$\checkmark$|X|$\checkmark$|X|$\checkmark$|$\checkmark$|
+|Bob sees photon at $120^{\circ}$    |X|$\checkmark$|X|X|$\checkmark$|$\checkmark$|X|$\checkmark$|
+
+So for example, if the entangled photons are in hidden state 4, it is predetermined that Alice will see a photon if she orients her lens at $60^{\circ}$ or $120^{\circ}$, but not at $0^{\circ}$. At the same time, Bob will not see the photon if he orients his lens at $60^{\circ}$ or $120^{\circ}$, but will see it at $0^{\circ}$.
+
+With this in mind we can now run the experiment as described above: create the entangled state $\Psi^{-}$, give Alice and Bob one of the photons each (which we now assume are in any of the 8 hidden states), let them randomly choose to rotate their lens to $0^{\circ}$, $60^{\circ}$ or $120^{\circ}$, and see how often their measurements disagree (one of them sees a photon and the other does not). But actually we don't even have to run the experiments - we can just think it through.
+
+For example, for state 1 it's easy to see that their measurements would always be different: Alice always sees the photon and Bob never sees it.
+||Alice rotates $0^{\circ}$|Alice rotates $60^{\circ}$|Alice rotates $120^{\circ}$|
+|:---: |:---: |:---: |:---: |
+|Bob rotates $0^{\circ}$|Alice $\checkmark$, Bob X|Alice $\checkmark$, Bob X|Alice $\checkmark$, Bob X|   
+|Bob rotates $60^{\circ}$|Alice $\checkmark$, Bob X|Alice $\checkmark$, Bob X|Alice $\checkmark$, Bob X|
+|Bob rotates $120^{\circ}$|Alice $\checkmark$, Bob X|Alice $\checkmark$, Bob X|Alice $\checkmark$, Bob X|
+
+Or in the case of state 6 we see that their measurements will disagree in $\frac{5}{9}=55.6\%$ of the time.
+||Alice rotates $0^{\circ}$|Alice rotates $60^{\circ}$|Alice rotates $120^{\circ}$|
+|:---: |:---: |:---: |:---: |
+|Bob rotates $0^{\circ}$|**Alice X, Bob $\checkmark$**|Alice $\checkmark$, Bob $\checkmark$|**Alice X, Bob $\checkmark$**|   
+|Bob rotates $60^{\circ}$|Alice X, Bob X|**Alice $\checkmark$, Bob X**|Alice X, Bob X|
+|Bob rotates $120^{\circ}$|**Alice X, Bob $\checkmark$**|Alice $\checkmark$, Bob $\checkmark$|**Alice X, Bob $\checkmark$**|
+
+If we repeat this for all 8 hidden states we see that the disagreement is either $100\%$ (states 1 and 8) or $55.6\%$ (all other cases).
+
+And this gives us Bell's Inequality under the assumption of hidden variables:
+$$\text{\% time that Alice and Bob's measurements disagree}\ge55.6\%$$
+
+### What happens in actual quantum experiments
+We'll now show that in actual quantum experiments this inequality is violated. Alice and Bob's measurements agree $50\%$ of the time and hence the hidden variables explanation is not valid. We're going to simulate the quantum experiments using Qiskit, but experiments on real hardware have been run successfully many times by many researchers.
+
+This time round we just need a single table, because we don't have to consider 8 different hidden variable states (because we don't assume they exist).
+
+First consider the cases where Alice and Bob rotate their lenses by the same amount. We already now that in this case their measurements will always be different from each other. That's because we are dealing with the entangled state $\Psi^{-}$, in which upon measuring one of them will find their photon in the $\ket{H}$ and the other in the $\ket{V}$. These states are perpendicular to each other (they are basis states), so it's impossible for both of them to get the same measurement result when they orient their lens at the same angle.
+
+Next consider the case where Alice rotates her lens by $0^{\circ}$ (horizontally polarized) and Bob by $60^{\circ}$. If Alice doesn't see a photon it means that her photon is in the $\ket{V}$ state and Bob's in the $\ket{H}$ state. So we have to calculate how likely it is that Bob observes a photon. From the unit circle we know that $cos(60^{\circ}) = \frac{1}{2}$ and $sin(60^{\circ}) = \frac{\sqrt3}{2}$. So in terms of the basis vectors this is equal to $\frac{1}{2}\bra{H} + \frac{\sqrt3}{2}\bra{V}$. 
+
+By the Born Rule, the probability for Bob to observe the photon (which is in the $\ket{H}$ state) is then
+$$|\frac{1}{2}\braket{H|H} + \frac{\sqrt3}{2}\braket{V|H}|^{2} = \frac{1}{4}$$
+because $\braket{V|H}=0$. By the same logic, if Bob rotated his lens by $120^{\circ}$, he would observe the photon with probability
+$$|-\frac{1}{2}\braket{H|H} + \frac{\sqrt3}{2}\braket{V|H}|^{2} = \frac{1}{4}$$
+In other words, if Alice doesn't observe the photon, Bob observes his with $25\%$ probability. The same is true if Alice **does** observe her photon, which means her photon is in the $\ket{H}$ state and Bob's in the $\ket{V}$ state. In this case the chance that Bob doesn't observe a photon is 1 minus the probability that he does:
+$$1 - |\frac{1}{2}\braket{H|V} + \frac{\sqrt3}{2}\braket{V|V}|^{2} = \frac{1}{4}$$
+and
+$$1 - |-\frac{1}{2}\braket{H|V} + \frac{\sqrt3}{2}\braket{V|V}|^{2} = \frac{1}{4}$$
+So we see that the chance that Alice and Bob's measurements disagree is $25\%$.
+By symmetry we get the same probabilities if we just swapped Alice and Bob.
+
+Lastly, the case where Alice rotates her lens by $60^{\circ}$ and Bob by $120^{\circ}$. We don't actually have to repeat the calculations. We can just define different set of basis states $\ket{H^{*}}$ and $\ket{V^{*}}$ which are rotated by $-60^{\circ}$ relative to $\ket{H}$ and $\ket{V}$ and obtain the same result as when the lenses were rotated by $0^{\circ}$ and $60^{\circ}$.
+
+We can summarize the above results in a table which shows the probability that Alice and Bob's measurements disagree:
+||Alice rotates $0^{\circ}$|Alice rotates $60^{\circ}$|Alice rotates $120^{\circ}$|
+|:---: |:---: |:---: |:---: |
+|Bob rotates $0^{\circ}$|$100\%$|$25\%$|$25\%$|   
+|Bob rotates $60^{\circ}$|$25\%$|$100\%$|$25\%$|
+|Bob rotates $120^{\circ}$|$25\%$|$25\%$|$100\%$|
+
+Finally, taking the average we find that 
+$$\text{\% time that Alice and Bob's measurements disagree}=50\%$$
+This violates the inequality we derived earlier, which has to hold if the relationship between entangled quantum particles was explained by hidden variables.
+
+# Concluding remarks
+foobar
