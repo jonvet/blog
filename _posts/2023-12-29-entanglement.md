@@ -13,7 +13,7 @@ That's truly is small, but quantum particles used in experiments or actual quant
 When studying quantum mechanics it's a recurring theme that on such small scales, the world just works differently than what we're used to. 
 Entanglement is a specific manifestations of this.
 
-In this blog post we're trying to explore what entanglement is on a mathematical level, relate it to something more tangible (photons) and discuss what makes it so strange.
+In this blog post we're trying to explore what entanglement is on a mathematical level, relate it to something more tangible (photons) and discuss what makes it so strange. Prerequisites are basic familiarity with Dirac notation and quantum concepts like superposition.
 
 # Bell's states
 
@@ -106,7 +106,7 @@ And this gives us Bell's Inequality under the assumption of hidden variables:
 $$\text{\% time that Alice and Bob's measurements disagree}\ge55.6\%$$
 
 ### What happens in actual quantum experiments
-We'll now show that in actual quantum experiments this inequality is violated. Alice and Bob's measurements agree $50\%$ of the time and hence the hidden variables explanation is not valid. We're going to simulate the quantum experiments using Qiskit, but experiments on real hardware have been run successfully many times by many researchers.
+We'll now show that in actual quantum experiments this inequality is violated. Alice and Bob's measurements agree $50\%$ of the time and hence the hidden variables explanation is not valid.
 
 This time round we just need a single table, because we don't have to consider 8 different hidden variable states (because we don't assume they exist).
 
