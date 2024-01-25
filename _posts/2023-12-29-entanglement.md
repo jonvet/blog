@@ -13,17 +13,17 @@ That's truly is small, but quantum particles used in experiments or actual quant
 When studying quantum mechanics it's a recurring theme that on such small scales, the world just works differently than what we're used to. 
 Entanglement is a specific manifestations of this.
 
-In this blog post we're trying to explore what entanglement is on a mathematical level, relate it to something more tangible (photons) and discuss what makes it so strange. Prerequisites are basic familiarity with Dirac notation and quantum concepts like superposition.
+In this blog post we're trying to explore what entanglement is on a mathematical level, relate it to something more tangible (photons) and discuss what makes it so strange. Prerequisites are basic familiarity with [Dirac notation](https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation) and quantum concepts like superposition.
 
 # Bell's states
 
 We first consider the simplest example of achieving entanglement: a [Bell state](https://en.wikipedia.org/wiki/Bell_state). 
 Specifically, we create the Bell state $\Psi^{-} = \frac{\ket{01}-\ket{10}}{\sqrt{2}}$, which is obtained by 
-- starting with a 2 qubit register with both qubits in the $\ket{1}$ state
+- preparing a 2 qubit register with both qubits in the $\ket{1}$ state
 - applying the Hadamard gate to the first qubit
 - applying the CNOT controlled by the first qubit, acting on the second
 <p align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/The_Hadamard-CNOT_transform_on_the_zero-state.png" />
+  <img src="../assets/bell_state_preparation.png" />
 </p>
 
 Both qubits are in superposition, that is, if we were to measure either one we would find that they are in the $\ket{0}$ and the $\ket{1}$ states with 50% probability each.
@@ -36,10 +36,10 @@ And since we are talking about photons specifically, let's use the photon's pola
 
 In particular, let's denote a horizontally polarized photon by state $\ket{H}$ (equivalent to a qubit in state $\ket{0}$) a vertically polarized photon by the state $\ket{V}$ (equivalent to $\ket{1}$).  Then the entangled state looks like $\frac{\ket{HV}-\ket{VH}}{\sqrt{2}}$. 
 
-Continuing with our experimental setup, imagine we give the first of this pair of entangled qubits to Alice and the second to Bob. Let's use subscripts to denote which qubit belongs to who which makes the joint state now $\frac{\ket{H_{A}V_{B}}-\ket{V_{A}H_{B}}}{\sqrt{2}}$
+Also, imagine we give the first of this pair of entangled qubits to Alice and the second to Bob. Let's use subscripts to denote which qubit belongs to who which makes the joint state now $\frac{\ket{H_{A}V_{B}}-\ket{V_{A}H_{B}}}{\sqrt{2}}$
 
 Lastly, Alice and Bob are equipped with a measurement device, a linearly polarized lens.
-For the sake of simplicity (we are going to relax this assumption later) assume that both Alice and Bob orient their lens at $90^{\circ}$ making them vertically polarized lenses.
+For now assume that both Alice and Bob orient their lens at $90^{\circ}$ making them vertically polarized lenses.
 
 # Experiment outcomes
 As both photons are in superposition, Alice and Bob are *a priori* equally likely to observe that their lens either blocks the photon or let's it through.
@@ -47,11 +47,11 @@ Note that the joint state does not contain $\ket{V_{A}V_{B}}$ or $\ket{H_{A}H_{B
 
 Moreover, while either of the 2 outcomes are 50% likely before the experiment, if Alice were to use her lens first and saw a photon, Bob would know with certainty that he wouldn't observe a photon - he wouldn't even have to measure it. Likewise, if Alice were to use her lens but didn't see a photon, then Bob would know, without measuring, that he will definitely see a photon.
 
-The reason this happens is that the act of measuring alters the joint state. Before Alice's photon hits the lens it's in an equal superposition $\frac{\ket{H_{A}}-\ket{V_{A}}}{\sqrt{2}}$, that is, both measurement outcomes are equally likely. [Mathematically](https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation), measuring a  photon with arbitrary polarization, denoted by the ket $\ket{\psi}$, with an arbitrarily polarized lens means calculating the inner product with the bra $\bra{\phi}$. The resulting scalar can be interpreted as the probability amplitude of the photon passing the lens. Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So measuring the superposition state with a vertically polarized lens gives us $\frac{\braket{V_{A}|H_{A}}-\ket{V_{A}|V_{A}}}{\sqrt{2}} = -\frac{1}{\sqrt{2}}$. Via the [Born Rule](https://en.wikipedia.org/wiki/Born_rule) we obtain the probability of detecting the photon by squaring the amplitude and arrive at $\frac{1}{2}$ as promised.
+The reason this happens is that the act of measuring alters the joint state. Before Alice's photon hits the lens it's in an equal superposition $\frac{\ket{H_{A}}-\ket{V_{A}}}{\sqrt{2}}$, that is, both measurement outcomes are equally likely. [Mathematically](https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation), measuring a  photon with arbitrary polarization, denoted by the ket (column vector) $\ket{\psi}$, with an arbitrarily polarized lens means calculating the inner product with the bra (row vector) $\bra{\phi}$. The resulting scalar can be interpreted as the probability amplitude of the photon passing the lens. Since the vertical and horizontal lenses are perpendicular to each other (they are basis states) we know that $\braket{V|V}=1$ and $\braket{V|H}=0$. So measuring the superposition state with a vertically polarized lens gives us $\frac{\braket{V_{A}|H_{A}}-\braket{V_{A}|V_{A}}}{\sqrt{2}} = -\frac{1}{\sqrt{2}}$. Via the [Born Rule](https://en.wikipedia.org/wiki/Born_rule) we obtain the probability of detecting the photon by squaring the amplitude and arrive at $\frac{1}{2}$ as promised.
 
-However, once measured with a vertically polarized lens, the photon is no longer in superposition. You can try this out yourself with polarization filters you can buy [online](https://youtu.be/MzRCDLre1b4?t=945)! The lens will let exactly half of photons in superposition through and the other half are blocked. And the ones that make it through are vertically polarized.
+However, once measured with a vertically polarized lens, the photon is no longer in superposition. You can try this out yourself with polarization filters you can buy [online](https://youtu.be/MzRCDLre1b4?t=945)! The lens will let exactly half of photons in superposition through and the other half are blocked. And the ones that make it through are vertically polarized. You can prove it by holding a second lens behind the first one. If it's vertically polarized it will not have any effect (all photons that pass the first lens will also pass the second one), and if it's horizontally polarized, no photon will pass.
 
-In other words, we know with certainty that any photons that pass the filter (i.e. Alice is able to observe it on the other side) are vertically polarized - the state of her photon has collapsed to just $\ket{V_{A}}$. If Alice didn't observe the photon because it was blocked by her lens it would mean the state of her photon collapsed to $\ket{H_{A}}$. For Bob that means that his photons collapsed to the other state. To conclude, Alice's act of measuring, if she observed the photon, collapses the joint state to $\ket{V_{A}H_{B}}$.
+Long story short, we know with certainty that any photons that pass the filter (i.e. Alice is able to observe it on the other side) are vertically polarized - the state of her photon has collapsed to just $\ket{V_{A}}$. If Alice didn't observe the photon because it was blocked by her lens it would mean the state of her photon collapsed to $\ket{H_{A}}$. For Bob that means that his photons collapsed to the other state. To conclude, Alice's act of measuring, if she observed the photon, collapses the joint state to $\ket{V_{A}H_{B}}$.
 
 # What's special about this?
 If you wonder why this is exciting, consider a classical variant of this experiment. Instead of 2 quantum objects let's use 2 everyday objects like [gloves](https://www.sciencenews.org/blog/context/entanglement-spooky-not-action-distance). Imagine that we have a left-handed and a right-handed glove and put them into separate boxes. We then send Alice and Bob one of the boxes each at random. If Alice opens her box first and finds a left-handed glove, then Bob knows with certainty that his glove will be right-handed, and vice versa. It is also impossible for both Alice and Bob to get a left-handed glove, or both to get a right-handed-glove. So everything seems exactly the same as in our photon experiment. 
